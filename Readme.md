@@ -21,7 +21,7 @@ react-native link react-native-vector-icons
 
 ## edit
 
-- Tiến hành vào node_modules vào thư mục eact-native-vector-icons/src/index.js
+- Tiến hành vào node_modules vào thư mục react-native-parallax-scroll-view/src/index.js
 comment các dòng sau:
 ```js
 const { bool, func, number, string } = React.PropTypes;
