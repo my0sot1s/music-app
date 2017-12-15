@@ -10,7 +10,7 @@ import {
   Image, ImageBackground
 } from 'react-native';
 import Button from 'react-native-button';
-import { Artists } from '../../mock';
+// import { Artists } from '../../mock';
 import { connect } from 'react-redux'
 
 class ArtistListItem extends Component {

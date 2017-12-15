@@ -53,9 +53,11 @@ class Player extends Component {
         currentTime: 0,
       });
     }
-    this.props.navigation.goBack();
   }
 
+  goBack() {
+    this.props.navigation.goBack();
+  }
   goForward() {
     this.setState({
       songIndex: this.state.shuffle ? this.randomSongIndex() : this.state.songIndex + 1,
@@ -155,7 +157,7 @@ class Player extends Component {
         </View>
         <View style={styles.headerClose}>
           <Icon name="ios-arrow-dropleft-circle-outline" size={30} color="#a0a0a0" style={{ backgroundColor: "transparent" }}
-            onPress={this.goBackward.bind(this)} />
+            onPress={this.goBack.bind(this)} />
         </View>
         <Image
           style={styles.songImage}

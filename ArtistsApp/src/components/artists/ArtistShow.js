@@ -35,12 +35,14 @@ class ArtistShow extends Component {
   goBackList() {
     this.props.navigation.goBack();
   }
-  playSong(){
+  playSong() {
     this.props.navigation.navigate('Player',
-     { songIndex: 0,
-       songs: this.state.artist.songs,
-        image: this.state.artist.background, 
-        artist: this.state.artist })
+      {
+        songIndex: 0,
+        songs: this.state.artist.songs,
+        image: this.state.artist.background,
+        artist: this.state.artist
+      })
   }
   renderForeground() {
     return (

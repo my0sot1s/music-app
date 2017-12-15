@@ -7,25 +7,32 @@ import {
   View
 } from 'react-native';
 import Button from 'react-native-button';
-import { Artists } from '../../mock';
 import ArtistListItem from './ArtistListItem';
 import { connect } from 'react-redux'
 
 class ArtistList extends Component {
   constructor(props) {
     super(props);
-    let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+    this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.state = {
-      dataSource: ds.cloneWithRows(Artists),
+      dataSource: this.ds.cloneWithRows([])
     }
+  }
+  componentDidMount() {
+    fetch(`http://localhost:3000/music`).then(doc => {
+      return doc.json()
+    }).then(doc => {
+      this.setState({ dataSource: this.ds.cloneWithRows(doc) })
+    })
   }
 
   render() {
-    return (
+    if (!this.state.dataSource) return <View />
+    else return (
       <View style={styles.container}>
         {/* <Text style={styles.welcome}>
-          Artists
-        </Text> */}
+        Artists
+      </Text> */}
         <ListView
           dataSource={this.state.dataSource}
           renderRow={(artist) => <ArtistListItem artist={artist} {...this.props} />} />

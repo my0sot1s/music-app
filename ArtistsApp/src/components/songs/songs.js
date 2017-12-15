@@ -16,10 +16,15 @@ class ListSongs extends Component {
     }
     componentDidMount() {
         let _yemp = [];
-        Artists.map(value => {
-            _yemp.push(...value.songs)
+        fetch(`http://localhost:3000/music`).then(doc => {
+            return doc.json()
+        }).then(doc => {
+            doc.map(value => {
+                _yemp.push(...value.songs)
+            })
+            this.setState({ dataSource: this.ds.cloneWithRows(_yemp) })
         })
-        this.setState({ dataSource: this.ds.cloneWithRows(_yemp) })
+
     }
     renderRow(rowData, sectionId, rowId) {
         return <SongItem data={rowData} {...this.props} />
